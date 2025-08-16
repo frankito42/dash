@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crear Proveedor - App Inventario</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/MenuInicio.css">
+  <link rel="stylesheet" href="css/crear-proveedor.css">
+</head>
+
+<body class="dark-mode">
+  <!-- Header -->
+  <div class="header-standard supplier-header">
+    <div class="flex justify-between items-center max-w-6xl mx-auto">
+      <button class="back-button-standard" onclick="goBack()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="15,18 9,12 15,6"/>
+        </svg>
+      </button>
+      <div class="flex items-center gap-3 flex-1 ml-4">
+        <div class="icon-square">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+            <path d="M20 7h-9"/>
+            <path d="M14 17H5"/>
+            <circle cx="17" cy="17" r="3"/>
+            <circle cx="7" cy="7" r="3"/>
+          </svg>
+        </div>
+        <div class="header-title-standard">
+          <h1>Crear Proveedor</h1>
+          <p>Registra un nuevo proveedor en tu sistema</p>
+        </div>
+      </div>
+      <button class="theme-toggle-button" id="themeToggle">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 3v1m0 16v1m8.66-8.66h1M3.34 12H2m16.95 6.95l-.7.7M5.05 5.05l-.7.7m12.02-2.02a9 9 0 11-12.73 0 9 9 0 0112.73 0z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="container-standard">
+    <form id="supplierForm" class="flex flex-col gap-8">
+      
+      <!-- Información Básica -->
+      <div class="form-card">
+        <div class="card-header">
+          <div class="section-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="8.5" cy="7" r="4"/>
+              <line x1="20" y1="8" x2="20" y2="14"/>
+              <line x1="23" y1="11" x2="17" y2="11"/>
+            </svg>
+          </div>
+          <div class="section-text">
+            <h2>Información Básica</h2>
+            <p>Datos principales del proveedor</p>
+          </div>
+        </div>
+        
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label required">Nombre / Razón Social</label>
+            <input type="text" class="form-input" id="supplierName" placeholder="Ej: Distribuidora Central S.A.">
+            <span class="form-help">Nombre completo del proveedor o empresa</span>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label required">Tipo de Proveedor</label>
+            <select class="form-select" id="supplierType">
+              <option value="">Seleccionar tipo</option>
+              <option value="persona_fisica">Persona Física</option>
+              <option value="empresa">Empresa / Sociedad</option>
+              <option value="corporacion">Corporación</option>
+              <option value="cooperativa">Cooperativa</option>
+              <option value="gobierno">Entidad Gubernamental</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label required">Teléfono Principal</label>
+            <input type="tel" class="form-input" id="supplierPhone" placeholder="+1 234 567 8900">
+            <span class="form-help">Número de contacto directo</span>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label required">Email</label>
+            <input type="email" class="form-input" id="supplierEmail" placeholder="contacto@proveedor.com">
+            <span class="form-help">Correo electrónico principal</span>
+          </div>
+          
+          <div class="form-group full-width">
+            <label class="form-label required">Producto / Servicio Principal</label>
+            <input type="text" class="form-input" id="supplierProduct" placeholder="Ej: Materias primas, Equipos de oficina, Servicios de limpieza...">
+            <span class="form-help">Describe qué productos o servicios te proporciona</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Información de Contacto -->
+      <div class="form-card">
+        <div class="card-header">
+          <div class="section-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+          </div>
+          <div class="section-text">
+            <h2>Información de Contacto</h2>
+            <p>Datos adicionales de comunicación (opcional)</p>
+          </div>
+        </div>
+        
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label">Persona de Contacto</label>
+            <input type="text" class="form-input" id="contactPerson" placeholder="Juan Pérez">
+            <span class="form-help">Nombre del representante o contacto directo</span>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Teléfono Alternativo</label>
+            <input type="tel" class="form-input" id="alternativePhone" placeholder="+1 234 567 8901">
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">WhatsApp</label>
+            <input type="tel" class="form-input" id="whatsappNumber" placeholder="+1 234 567 8900">
+            <span class="form-help">Número para comunicación rápida</span>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Sitio Web</label>
+            <input type="url" class="form-input" id="website" placeholder="https://www.proveedor.com">
+          </div>
+        </div>
+      </div>
+
+      <!-- Dirección y Ubicación -->
+      <div class="form-card">
+        <div class="card-header">
+          <div class="section-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+          </div>
+          <div class="section-text">
+            <h2>Dirección y Ubicación</h2>
+            <p>Ubicación física del proveedor</p>
+          </div>
+        </div>
+        
+        <div class="form-grid">
+          <div class="form-group full-width">
+            <label class="form-label required">Dirección</label>
+            <input type="text" class="form-input" id="supplierAddress" placeholder="Av. Principal 123, Piso 4, Oficina 401">
+            <span class="form-help">Dirección completa con detalles</span>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label required">Ciudad</label>
+            <input type="text" class="form-input" id="supplierCity" placeholder="Ciudad de México">
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label required">Estado / Provincia</label>
+            <input type="text" class="form-input" id="supplierState" placeholder="CDMX">
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label required">País</label>
+            <input type="text" class="form-input" id="supplierCountry" placeholder="México">
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Código Postal</label>
+            <input type="text" class="form-input" id="supplierZip" placeholder="01000">
+          </div>
+        </div>
+      </div>
+
+      <!-- Información Comercial -->
+      <div class="form-card">
+        <div class="card-header">
+          <div class="section-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+            </svg>
+          </div>
+          <div class="section-text">
+            <h2>Información Comercial</h2>
+            <p>Condiciones y términos comerciales (opcional)</p>
+          </div>
+        </div>
+        
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label">Categoría</label>
+            <select class="form-select" id="supplierCategory">
+              <option value="">Seleccionar categoría</option>
+              <option value="materias_primas">Materias Primas</option>
+              <option value="equipos">Equipos y Maquinaria</option>
+              <option value="oficina">Suministros de Oficina</option>
+              <option value="servicios">Servicios Profesionales</option>
+              <option value="tecnologia">Tecnología</option>
+              <option value="mantenimiento">Mantenimiento</option>
+              <option value="transporte">Transporte y Logística</option>
+              <option value="otros">Otros</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Condiciones de Pago</label>
+            <select class="form-select" id="paymentTerms">
+              <option value="">Seleccionar condición</option>
+              <option value="contado">Contado</option>
+              <option value="15_dias">15 días</option>
+              <option value="30_dias">30 días</option>
+              <option value="45_dias">45 días</option>
+              <option value="60_dias">60 días</option>
+              <option value="90_dias">90 días</option>
+              <option value="personalizado">Personalizado</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Moneda de Trabajo</label>
+            <input type="text" class="form-input" id="currency" placeholder="USD, EUR, ARS, MXN, BRL...">
+            <span class="form-help">Moneda principal para transacciones</span>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Tiempo de Entrega</label>
+            <input type="text" class="form-input" id="deliveryTime" placeholder="Ej: 5-7 días hábiles">
+            <span class="form-help">Tiempo promedio de entrega</span>
+          </div>
+          
+          <div class="form-group full-width">
+            <label class="form-label">Notas y Observaciones</label>
+            <textarea class="form-textarea" id="supplierNotes" placeholder="Información adicional importante sobre el proveedor..."></textarea>
+            <span class="form-help">Cualquier información relevante que debas recordar</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Botones de Acción -->
+      <div class="flex gap-4 justify-end">
+        <button type="button" class="btn btn-secondary" onclick="clearForm()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 6h18"/>
+            <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/>
+            <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/>
+          </svg>
+          Limpiar
+        </button>
+        
+        <button type="submit" class="btn btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="20,6 9,17 4,12"/>
+          </svg>
+          Crear Proveedor
+        </button>
+      </div>
+    </form>
+
+    <!-- Pantalla de éxito (inicialmente oculta) -->
+    <div class="success-content" id="successScreen" style="display: none;">
+      <div class="success-icon">
+        <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3">
+          <polyline points="20,6 9,17 4,12"/>
+        </svg>
+      </div>
+      <h2 class="success-title">¡Proveedor Creado Exitosamente!</h2>
+      <p class="success-subtitle" id="successMessage">El proveedor ha sido registrado en tu sistema.</p>
+      
+      <div class="success-actions">
+        <button class="btn btn-secondary" onclick="createAnother()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="8" x2="12" y2="16"/>
+            <line x1="8" y1="12" x2="16" y2="12"/>
+          </svg>
+          Crear Otro
+        </button>
+        
+        <button class="btn btn-primary" onclick="goToSuppliers()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 7h-9"/>
+            <path d="M14 17H5"/>
+            <circle cx="17" cy="17" r="3"/>
+            <circle cx="7" cy="7" r="3"/>
+          </svg>
+          Ver Proveedores
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/crear-proveedor.js"></script>
+</body>
+</html>

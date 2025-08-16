@@ -1,0 +1,144 @@
+
+@import url('base.css');
+
+/* ==============================================
+   SOLO ESTILOS ÚNICOS PARA CREAR CLIENTE
+   ============================================== */
+
+/* Header específico para clientes (verde) */
+.header-cliente {
+  background: linear-gradient(135deg, 
+    rgba(16, 185, 129, 0.85), 
+    rgba(5, 150, 105, 0.85)
+  );
+}
+
+/* Secciones del formulario usando componentes base */
+.form-section-cliente {
+  padding: var(--spacing-2xl);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.form-section-cliente:last-child {
+  border-bottom: none;
+}
+
+.section-title-cliente {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-xl);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.section-title-cliente::before {
+  content: '';
+  width: 4px;
+  height: 16px;
+  background: var(--success-gradient);
+  border-radius: var(--radius-sm);
+}
+
+/* Input de WhatsApp personalizado */
+.whatsapp-input-cliente {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.whatsapp-input-cliente .form-input {
+  padding-right: 3rem;
+}
+
+.whatsapp-test-btn {
+  position: absolute;
+  right: var(--spacing-sm);
+  background: #25D366;
+  border: none;
+  border-radius: var(--radius-md);
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  color: white;
+}
+
+.whatsapp-test-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+}
+
+/* Input de moneda personalizado */
+.currency-input-cliente {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.currency-symbol-cliente {
+  position: absolute;
+  left: var(--spacing-lg);
+  color: var(--text-secondary);
+  font-weight: 600;
+  z-index: 1;
+}
+
+.currency-input-cliente .form-input {
+  padding-left: 2.5rem;
+}
+
+/* Contador de caracteres */
+.char-counter {
+  display: block;
+  text-align: right;
+  margin-top: var(--spacing-xs);
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+}
+
+/* Botones específicos usando clases base */
+.btn-create-cliente {
+  background: var(--success-gradient);
+  color: white;
+  border: 2px solid transparent;
+  box-shadow: var(--shadow-success);
+}
+
+.btn-create-cliente:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-success-lg);
+}
+
+/* Modal específico usando componentes base */
+.modal-content-confirm-cliente {
+  text-align: center;
+  padding: var(--spacing-2xl);
+}
+
+.modal-icon-cliente {
+  width: 64px;
+  height: 64px;
+  background: var(--success-gradient);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--spacing-xl);
+  color: white;
+}
+
+/* Animaciones específicas usando delays */
+.form-section-cliente {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.form-section-cliente:nth-child(1) { animation-delay: 0.1s; }
+.form-section-cliente:nth-child(2) { animation-delay: 0.2s; }
+.form-section-cliente:nth-child(3) { animation-delay: 0.3s; }
+.form-section-cliente:nth-child(4) { animation-delay: 0.4s; }
+

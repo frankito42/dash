@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DASH - Loading</title>
+    <style>
+        :root {
+            --vh: 1vh;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0f0f23;
+            height: 100vh;
+            height: 100dvh; /* Dynamic viewport height para móviles */
+            min-height: 100vh;
+            min-height: 100dvh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Partículas sutiles de fondo */
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: rgba(255, 111, 0, 0.1);
+            border-radius: 50%;
+            animation: particleFloat 8s infinite linear;
+        }
+
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(100vh) translateX(0px) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.3;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-100px) translateX(50px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Container principal */
+        .splash-container {
+            text-align: center;
+            z-index: 10;
+            animation: containerEntry 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+        }
+
+        @keyframes containerEntry {
+            0% {
+                opacity: 0;
+                transform: translateY(40px) scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Logo container */
+        .logo-container {
+            position: relative;
+            margin-bottom: 40px;
+        }
+
+        /* Logo circular con animación de pulso y resplandor */
+        .logo {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #ff6f00 0%, #ff8c00 50%, #e65100 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            position: relative;
+            box-shadow: 
+                0 10px 30px rgba(255, 111, 0, 0.3),
+                0 0 0 0 rgba(255, 111, 0, 0.4);
+            animation: logoBreath 2.5s ease-in-out infinite;
+        }
+
+        @keyframes logoBreath {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 
+                    0 10px 30px rgba(255, 111, 0, 0.3),
+                    0 0 0 0 rgba(255, 111, 0, 0.4);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 
+                    0 15px 40px rgba(255, 111, 0, 0.4),
+                    0 0 0 15px rgba(255, 111, 0, 0.1);
+            }
+        }
+
+        /* Anillo rotatorio alrededor del logo */
+        .logo::before {
+            content: '';
+            position: absolute;
+            width: 140px;
+            height: 140px;
+            border: 3px solid transparent;
+            border-top: 3px solid rgba(255, 111, 0, 0.6);
+            border-right: 3px solid rgba(255, 111, 0, 0.3);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: logoRotate 3s linear infinite;
+        }
+
+        @keyframes logoRotate {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+            100% {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+
+        /* Segundo anillo rotatorio (dirección opuesta) */
+        .logo::after {
+            content: '';
+            position: absolute;
+            width: 160px;
+            height: 160px;
+            border: 2px solid transparent;
+            border-bottom: 2px solid rgba(255, 140, 0, 0.4);
+            border-left: 2px solid rgba(255, 140, 0, 0.2);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: logoRotateReverse 4s linear infinite;
+        }
+
+        @keyframes logoRotateReverse {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+            100% {
+                transform: translate(-50%, -50%) rotate(-360deg);
+            }
+        }
+
+        .logo-text {
+            font-size: 28px;
+            font-weight: 700;
+            color: white;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            letter-spacing: 2px;
+            z-index: 2;
+            position: relative;
+            animation: textPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes textPulse {
+            0%, 100% {
+                opacity: 1;
+                text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            }
+            50% {
+                opacity: 0.9;
+                text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+            }
+        }
+
+        /* Loading container */
+        .loading-container {
+            margin-top: 30px;
+        }
+
+        .loading-text {
+            color: #d6d8db;
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 25px;
+            animation: textFade 2.5s ease-in-out infinite;
+        }
+
+        @keyframes textFade {
+            0%, 100% {
+                opacity: 0.7;
+                transform: translateY(0);
+            }
+            50% {
+                opacity: 1;
+                transform: translateY(-2px);
+            }
+        }
+
+        /* Barra de progreso estilo DASH */
+        .progress-container {
+            width: 220px;
+            height: 6px;
+            background: rgba(75, 85, 99, 0.1);
+            border-radius: 12px;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #ff6f00, #ff8c00, #e65100);
+            border-radius: 12px;
+            width: 0%;
+            animation: progressFill 3.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+            box-shadow: 
+                0 0 12px rgba(255, 111, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            position: relative;
+        }
+
+        .progress-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: progressShimmer 1.5s ease-in-out infinite;
+        }
+
+        @keyframes progressFill {
+            0% {
+                width: 0%;
+            }
+            75% {
+                width: 90%;
+            }
+            100% {
+                width: 100%;
+            }
+        }
+
+        @keyframes progressShimmer {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        /* Puntos de carga estilo DASH */
+        .loading-dots {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 25px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff6f00, #ff8c00);
+            margin: 0 6px;
+            animation: dotWave 1.8s ease-in-out infinite;
+            box-shadow: 0 4px 8px rgba(255, 111, 0, 0.3);
+        }
+
+        .dot:nth-child(1) { animation-delay: 0s; }
+        .dot:nth-child(2) { animation-delay: 0.2s; }
+        .dot:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes dotWave {
+            0%, 60%, 100% {
+                transform: scale(0.8) translateY(0);
+                opacity: 0.7;
+            }
+            30% {
+                transform: scale(1.2) translateY(-15px);
+                opacity: 1;
+            }
+        }
+
+        /* Marca de agua sutil */
+        .brand-watermark {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 12px;
+            color: rgba(255, 254, 254, 0.4);
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        /* Responsivo */
+        @media (max-width: 480px) {
+            body {
+                padding: 20px 0; /* Padding adicional en móviles */
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+                min-height: 100dvh;
+                /* Fallback para navegadores que no soportan dvh */
+                min-height: calc(var(--vh, 1vh) * 100);
+            }
+            
+            .splash-container {
+                position: relative;
+                top: 0;
+                transform: translateY(0);
+            }
+            
+            .logo {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .logo::before {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .logo::after {
+                width: 140px;
+                height: 140px;
+            }
+            
+            .logo-text {
+                font-size: 24px;
+            }
+            
+            .progress-container {
+                width: 180px;
+            }
+            
+            .loading-text {
+                font-size: 14px;
+            }
+            
+            .brand-watermark {
+                bottom: 20px;
+                position: fixed; /* Fixed para que siempre esté visible */
+            }
+        }
+
+        /* Transición de salida */
+        .fade-out {
+            animation: fadeOut 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeOut {
+            0% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+        }
+
+        /* Estados hover para interactividad opcional */
+        .logo:hover {
+            animation-duration: 1.5s;
+        }
+
+        .splash-container:hover .logo-text {
+            animation-duration: 1s;
+        }
+    </style>
+</head>
+<body>
+    <!-- Partículas flotantes -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Container principal -->
+    <div class="splash-container" id="splashContainer">
+        <div class="logo-container">
+            <div class="logo">
+                <div class="logo-text">DASH</div>
+            </div>
+        </div>
+
+        <div class="loading-container">
+            <div class="loading-text">Cargando tu experiencia...</div>
+            
+            <div class="progress-container">
+                <div class="progress-bar"></div>
+            </div>
+
+            <div class="loading-dots">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Marca de agua -->
+    <div class="brand-watermark">DESIGNED BY NEOSOFTWARE</div>
+
+    <script>
+        // Generar partículas sutiles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 30; // Menos partículas para fondo blanco
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                // Posición aleatoria
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 8 + 's';
+                particle.style.animationDuration = (Math.random() * 4 + 6) + 's';
+                
+                // Variación en tamaño
+                const size = Math.random() * 2 + 2;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Simular carga progresiva
+        function simulateLoading() {
+            const messages = [
+                'Cargando tu experiencia...',
+                'Configurando interfaz...',
+                'Casi listo...'
+            ];
+            
+            const loadingText = document.querySelector('.loading-text');
+            let messageIndex = 0;
+            
+            // Cambiar mensaje cada segundo
+            const messageInterval = setInterval(() => {
+                messageIndex = (messageIndex + 1) % messages.length;
+                loadingText.style.opacity = '0';
+                
+                setTimeout(() => {
+                    loadingText.textContent = messages[messageIndex];
+                    loadingText.style.opacity = '1';
+                }, 200);
+            }, 1200);
+
+            // Finalizar carga después de 4.5 segundos
+            setTimeout(() => {
+                clearInterval(messageInterval);
+                
+                // Aplicar fade out
+                const splashContainer = document.getElementById('splashContainer');
+                splashContainer.classList.add('fade-out');
+                
+                setTimeout(() => {
+                    window.location.href = 'MenuInicio.html';
+                    console.log('DASH App cargada - redirigir a la pantalla principal');
+                }, 800);
+            }, 4000);
+        }
+
+        // Agregar interactividad opcional
+        function addInteractivity() {
+            const logo = document.querySelector('.logo');
+            const logoText = document.querySelector('.logo-text');
+            
+            // Efecto al hacer click en el logo
+            logo.addEventListener('click', () => {
+                logo.style.animation = 'logoBreath 0.5s ease-in-out';
+                logoText.style.animation = 'textPulse 0.5s ease-in-out';
+                
+                setTimeout(() => {
+                    logo.style.animation = 'logoBreath 2.5s ease-in-out infinite';
+                    logoText.style.animation = 'textPulse 2s ease-in-out infinite';
+                }, 500);
+            });
+        }
+
+        // Inicializar
+        document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
+            simulateLoading();
+            addInteractivity();
+            
+            // Forzar recálculo de altura en móviles
+            function adjustHeight() {
+                const vh = window.innerHeight * 0.01;
+                document.documentElement.style.setProperty('--vh', `${vh}px`);
+            }
+            
+            adjustHeight();
+            window.addEventListener('resize', adjustHeight);
+            window.addEventListener('orientationchange', () => {
+                setTimeout(adjustHeight, 100);
+            });
+        });
+
+        // Prevenir scroll en móviles
+        document.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+        }, { passive: false });
+
+        // Detectar preferencias de movimiento reducido
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            document.documentElement.style.setProperty('--animation-duration', '0.01ms');
+        }
+    </script>
+</body>
+</html>

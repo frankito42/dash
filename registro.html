@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Registro DASH</title>
+  <link rel="stylesheet" href="css/registro.css">
+  <link rel="stylesheet" href="css/general.css">
+</head>
+<body>
+  <!-- Animated background shapes -->
+  <div class="bg-shapes">
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+  </div>
+
+  
+
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <a href="bienvenida.html" class="back-btn">
+        ←
+      </a>
+      <h1 class="logo">DASH</h1>
+      <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+    </div>
+
+    <!-- Main Registration Card -->
+    <div class="main-card">
+      <div class="card-title">
+        <h2>Crear Cuenta</h2>
+        <p class="card-subtitle">Completa todos los datos para comenzar</p>
+      </div>
+
+      <form id="registrationForm">
+        <div class="form-group">
+          <label class="form-label">Nombre completo</label>
+          <div class="input-wrapper">
+            <input type="text" class="form-input" name="username" placeholder="Ingresa tu nombre completo" required />
+            <div class="error-message">Por favor ingresa tu nombre</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Correo electrónico</label>
+          <div class="input-wrapper">
+            <input type="email" class="form-input" name="email" placeholder="tu-email@ejemplo.com" required />
+            <div class="error-message">Por favor ingresa un correo válido</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Contraseña</label>
+          <div class="input-wrapper">
+            <input type="password" class="form-input" placeholder="Mínimo 8 caracteres" required />
+            <div class="error-message">La contraseña debe tener al menos 8 caracteres</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Confirmar contraseña</label>
+          <div class="input-wrapper">
+            <input type="password" class="form-input" placeholder="Repite tu contraseña" required />
+            <div class="error-message">Las contraseñas no coinciden</div>
+          </div>
+        </div>
+
+        <button type="submit" class="register-btn">
+          ➤ CREAR CUENTA
+        </button>
+        
+        <div class="divider">
+          <span>O regístrate con</span>
+        </div>
+
+        <button type="button" class="google-btn">
+          <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTIyLjU2IDEyLjI1QzIyLjU2IDExLjQ3IDIyLjQ5IDEwLjcyIDIyLjM2IDEwSDE1VjE0LjI2SDEyLjFDMTEuNzYgMTMuNyAxMS4yMyAxMy4yNiAxMC42NSAxMy4wM1YxNS4yOUgxMy4yN0MxNi4wNSAxMi44MiAyMC45MiA4Ljc1IDIyLjU2IDEyLjI1WiIgZmlsbD0iIzQyODVGNCIvPgo8cGF0aCBkPSJNMTIgMjBDMTQuNzMgMjAgMTYuOTYgMTkuMTMgMTguNTMgMTcuNjdMMTUuOTEgMTUuNDFDMTUuMDggMTYuMDQgMTMuOTYgMTYuNDMgMTIgMTYuNDNDOS4zMiAxNi40MyA3LjEyIDE0LjUzIDYuMzEgMTEuOTVINC44NVYxNC4yNUM2LjQyIDE3LjM4IDguOTcgMjAgMTIgMjBaIiBmaWxsPSIjMzRBODUzIi8+CjxwYXRoIGQ9Ik02LjMxIDExLjk1QzYuMDUgMTEuMzEgNS45MSAxMC42NyA1LjkxIDEwQzUuOTEgOS4zMyA2LjA1IDguNjkgNi4zMSA4LjA1VjUuNzFINC44NUM0LjE3IDcuMTEgMy43NSA4LjcgMy43NSAxMEM0LjE3IDExLjMgNC4xNyAxMi44OSA0Ljg1IDE0LjI5TDYuMzEgMTEuOTVaIiBmaWxsPSIjRkJCQzA0Ii8+CjxwYXRoIGQ9Ik0xMiAzLjU3QzE0LjAzIDMuNTcgMTUuNzkgNC4zNSAxNi45OCA1LjVMMTkuMzYgMy4xMkMxNi45NiAwLjkyIDE0LjczIDAgMTIgMEM4Ljk3IDAgNi40MiAyLjYyIDQuODUgNS43MUw2LjMxIDguMDVDNy4xMiA1LjQ3IDkuMzIgMy41NyAxMiAzLjU3WiIgZmlsbD0iI0VBNDMzNSIvPgo8L3N2Zz4K" alt="Google" />
+          Continuar con Google
+        </button>
+
+
+      </form>
+    </div>
+  </div>
+
+  <script src="js/registro.js"> </script>
+</body>
+</html>

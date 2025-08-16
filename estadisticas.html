@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estadísticas - App Inventario</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/estadisticas.css">
+</head>
+
+<body class="dark-mode">
+
+    <!-- Header usando sistema base + específico -->
+    <header class="header-standard header-estadisticas">
+        <button class="back-button-standard" id="volverInicio">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+        </button>
+        <div class="header-title-standard">
+            <h1>📊 Estadísticas</h1>
+            <p>Analiza el rendimiento de tu negocio</p>
+        </div>
+        <button id="toggleTheme" class="theme-toggle-button" title="Cambiar tema"></button>
+    </header>
+
+    <!-- Contenido principal usando sistema -->
+    <main class="main-content-standard">
+        <div class="container-standard">
+            
+            <!-- Resumen de métricas principales usando grid system -->
+            <section class="mb-8">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="card text-center hover-lift">
+                        <div class="icon-circle stats-sales mx-auto mb-4">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                            </svg>
+                        </div>
+                        <div class="text-xs text-secondary mb-2">Ventas del Mes</div>
+                        <div class="text-2xl font-bold mb-1">$45,320</div>
+                        <div class="card-change positive text-xs font-semibold">+12.5%</div>
+                    </div>
+                    <div class="card text-center hover-lift">
+                        <div class="icon-circle stats-products mx-auto mb-4">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                            </svg>
+                        </div>
+                        <div class="text-xs text-secondary mb-2">Productos Vendidos</div>
+                        <div class="text-2xl font-bold mb-1">1,247</div>
+                        <div class="card-change positive text-xs font-semibold">+8.2%</div>
+                    </div>
+                    <div class="card text-center hover-lift">
+                        <div class="icon-circle stats-profit mx-auto mb-4">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="12" y1="19" x2="12" y2="5"/>
+                                <polyline points="5,12 12,5 19,12"/>
+                            </svg>
+                        </div>
+                        <div class="text-xs text-secondary mb-2">Ganancia Neta</div>
+                        <div class="text-2xl font-bold mb-1">$17,320</div>
+                        <div class="card-change positive text-xs font-semibold">+15.3%</div>
+                    </div>
+                    <div class="card text-center hover-lift">
+                        <div class="icon-circle stats-orders mx-auto mb-4">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9 22V12h6v10M9 12L4.91 4.91a2.78 2.78 0 0 1 .49-3.4 2.78 2.78 0 0 1 3.4.49L19.09 12"/>
+                            </svg>
+                        </div>
+                        <div class="text-xs text-secondary mb-2">Órdenes Totales</div>
+                        <div class="text-2xl font-bold mb-1">89</div>
+                        <div class="card-change positive text-xs font-semibold">+6.7%</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tabs de período usando componentes -->
+            <section class="mb-8">
+                <div class="flex justify-center gap-2 p-2 bg-card border border-color rounded-xl">
+                    <button class="btn btn-sm active" data-period="month">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                            <line x1="16" y1="2" x2="16" y2="6"/>
+                            <line x1="8" y1="2" x2="8" y2="6"/>
+                            <line x1="3" y1="10" x2="21" y2="10"/>
+                        </svg>
+                        Mensual
+                    </button>
+                    <button class="btn btn-sm btn-secondary" data-period="week">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M8 2v4m8-4v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/>
+                        </svg>
+                        Semanal
+                    </button>
+                </div>
+            </section>
+
+            <!-- Gráfico 1: Productos Más Vendidos -->
+            <section class="card chart-section mb-8">
+                <h3 class="flex items-center gap-3 text-lg font-semibold text-primary mb-6">
+                    <span class="text-xl">🏆</span>
+                    Productos Más Vendidos
+                </h3>
+                <div class="chart-container">
+                    <div id="graficoProductos" style="width: 100%; height: 220px;"></div>
+                </div>
+            </section>
+
+            <!-- Gráfico 2: Ventas por Período -->
+            <section class="card chart-section mb-8">
+                <h3 class="flex items-center gap-3 text-lg font-semibold text-primary mb-6">
+                    <span class="text-xl">📈</span>
+                    Evolución de Ventas
+                </h3>
+                <div class="chart-container">
+                    <div id="graficoVentas" style="width: 100%; height: 240px;"></div>
+                </div>
+            </section>
+
+            <!-- Gráfico 3: Balance de Gastos e Ingresos -->
+            <section class="card chart-section mb-8">
+                <h3 class="flex items-center gap-3 text-lg font-semibold text-primary mb-6">
+                    <span class="text-xl">💰</span>
+                    Balance: Ingresos vs Gastos
+                </h3>
+                <div class="chart-container">
+                    <div id="graficoBalance" style="width: 100%; height: 220px;"></div>
+                </div>
+            </section>
+
+            <!-- Insights adicionales usando grid y cards -->
+            <section class="mb-8">
+                <h3 class="text-lg font-semibold text-primary mb-6">💡 Insights del Negocio</h3>
+                <div class="grid gap-4">
+                    <div class="card insight-card insight-success hover-lift">
+                        <div class="flex items-start gap-4">
+                            <div class="text-2xl">📊</div>
+                            <div class="flex-1">
+                                <div class="font-semibold text-primary mb-2">Tendencia Positiva</div>
+                                <div class="text-sm text-secondary">Las ventas han aumentado un 12.5% este mes comparado con el anterior</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card insight-card insight-warning hover-lift">
+                        <div class="flex items-start gap-4">
+                            <div class="text-2xl">⚠️</div>
+                            <div class="flex-1">
+                                <div class="font-semibold text-primary mb-2">Revisar Inventario</div>
+                                <div class="text-sm text-secondary">Harina está siendo muy demandada, considera aumentar el stock</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card insight-card insight-info hover-lift">
+                        <div class="flex items-start gap-4">
+                            <div class="text-2xl">💡</div>
+                            <div class="flex-1">
+                                <div class="font-semibold text-primary mb-2">Oportunidad de Crecimiento</div>
+                                <div class="text-sm text-secondary">Pan y Arroz tienen potencial, considera promociones especiales</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Botones de acción usando sistema de botones -->
+            <section class="flex flex-col md:flex-row gap-4 justify-center">
+                <button class="btn btn-primary btn-lg" id="exportarReporte">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                        <polyline points="7,10 12,15 17,10"/>
+                        <line x1="12" y1="15" x2="12" y2="3"/>
+                    </svg>
+                    Exportar Reporte
+                </button>
+                <button class="btn btn-secondary btn-lg" id="verDetalles">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                    Ver Más Detalles
+                </button>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.0/echarts.min.js"></script>
+    <script src="js/estadisticas.js"></script>
+
+</body>
+
+</html>
+
+
+
+
+
+

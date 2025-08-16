@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Configurar Mi Negocio - App Inventario</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/crear-negocio.css">
+</head>
+
+<body class="dark-mode">
+  <!-- Header usando sistema base + específico -->
+  <header class="header-standard setup-header">
+    <div class="header-title">
+      <div class="icon-square header-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+          <path d="M19 21V5a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5m-4 0h4"/>
+        </svg>
+      </div>
+      <div class="header-text">
+        <h1>Configurar Mi Negocio</h1>
+        <p>Vamos a personalizar tu experiencia</p>
+      </div>
+    </div>
+    <button class="theme-toggle" id="themeToggle">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 3v1m0 16v1m8.66-8.66h1M3.34 12H2m16.95 6.95l-.7.7M5.05 5.05l-.7.7m12.02-2.02a9 9 0 11-12.73 0 9 9 0 0112.73 0z"/>
+      </svg>
+    </button>
+  </header>
+
+  <!-- Contenedor principal usando sistema -->
+  <div class="container-standard setup-container">
+    <!-- Progreso -->
+    <div class="progress-section">
+      <h2 class="text-2xl font-bold text-primary mb-2 progress-title" id="progressTitle">Información Básica</h2>
+      <p class="text-secondary mb-8 progress-subtitle" id="progressSubtitle">Cuéntanos sobre tu negocio</p>
+      
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill" style="width: 25%"></div>
+      </div>
+      
+      <div class="progress-steps">
+        <div class="step active" data-step="1">
+          <div class="step-circle">1</div>
+          <div class="step-label">Información Básica</div>
+        </div>
+        <div class="step" data-step="2">
+          <div class="step-circle">2</div>
+          <div class="step-label">Tipo de Negocio</div>
+        </div>
+        <div class="step" data-step="3">
+          <div class="step-circle">3</div>
+          <div class="step-label">Información Adicional</div>
+        </div>
+        <div class="step" data-step="4">
+          <div class="step-circle">4</div>
+          <div class="step-label">Resumen</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Paso 1: Información Básica -->
+    <div class="step-content active" id="step1">
+      <div class="card form-card">
+        <div class="form-section mb-8">
+          <h3 class="flex items-center gap-2 text-lg font-semibold text-primary mb-2 section-title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M19 21V5a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5m-4 0h4"/>
+            </svg>
+            Datos del Negocio
+          </h3>
+          <p class="text-secondary text-sm mb-6 section-subtitle">Información esencial para identificar tu negocio</p>
+          
+          <div class="grid gap-6 form-grid">
+            <div class="form-group">
+              <label class="form-label required">Nombre del Negocio</label>
+              <input type="text" class="form-input" id="businessName" placeholder="Ej: Tienda La Esquina, Café Central...">
+              <span class="form-help">Este será el nombre que aparecerá en tu aplicación</span>
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label required">Teléfono</label>
+              <input type="tel" class="form-input" id="businessPhone" placeholder="Ej: +1 234 567 8900">
+              <span class="form-help">Número de contacto principal del negocio</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h3 class="flex items-center gap-2 text-lg font-semibold text-primary mb-2 section-title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            Ubicación
+          </h3>
+          <p class="text-secondary text-sm mb-6 section-subtitle">¿Dónde se encuentra tu negocio?</p>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 form-grid two-columns">
+            <div class="form-group">
+              <label class="form-label required">Dirección</label>
+              <input type="text" class="form-input" id="businessAddress" placeholder="Ej: Av. Principal 123">
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label required">Ciudad</label>
+              <input type="text" class="form-input" id="businessCity" placeholder="Ej: Ciudad de México">
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label required">Estado/Provincia</label>
+              <input type="text" class="form-input" id="businessState" placeholder="Ej: CDMX, Buenos Aires, São Paulo...">
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label required">País</label>
+              <input type="text" class="form-input" id="businessCountry" placeholder="Ej: México, Argentina, Brasil...">
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label">Código Postal</label>
+              <input type="text" class="form-input" id="businessZip" placeholder="Ej: 01000, C1000, 01310-100...">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Paso 2: Tipo de Negocio -->
+    <div class="step-content" id="step2">
+      <div class="card form-card">
+        <div class="form-section">
+          <h3 class="flex items-center gap-2 text-lg font-semibold text-primary mb-2 section-title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
+              <rect x="8" y="2" width="8" height="4" rx="1" ry="1"/>
+            </svg>
+            ¿Qué tipo de negocio tienes?
+          </h3>
+          <p class="text-secondary text-sm mb-6 section-subtitle">Selecciona la categoría que mejor describa tu negocio</p>
+          
+          <div class="business-types">
+            <div class="business-type" data-type="retail">
+              <div class="business-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                  <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                  <line x1="3" y1="6" x2="21" y2="6"/>
+                  <path d="M16 10a4 4 0 0 1-8 0"/>
+                </svg>
+              </div>
+              <div class="business-name">Comercio/Tienda</div>
+              <div class="business-description">Venta de productos físicos, retail, tienda</div>
+            </div>
+
+            <div class="business-type" data-type="restaurant">
+              <div class="business-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                  <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/>
+                  <path d="M7 2v20"/>
+                  <path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3z"/>
+                </svg>
+              </div>
+              <div class="business-name">Restaurante/Comida</div>
+              <div class="business-description">Restaurante, cafetería, comida rápida</div>
+            </div>
+
+            <div class="business-type" data-type="services">
+              <div class="business-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                </svg>
+              </div>
+              <div class="business-name">Servicios</div>
+              <div class="business-description">Servicios profesionales, consultoría, reparaciones</div>
+            </div>
+
+            <div class="business-type" data-type="health">
+              <div class="business-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                  <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                </svg>
+              </div>
+              <div class="business-name">Salud/Belleza</div>
+              <div class="business-description">Farmacia, peluquería, estética, spa</div>
+            </div>
+
+            <div class="business-type" data-type="automotive">
+              <div class="business-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                  <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9L18.4 9.6a2 2 0 0 0-1.8-1.2H7.4a2 2 0 0 0-1.8 1.2L3.5 11.1C2.7 11.3 2 12.1 2 13v3c0 .6.4 1 1 1h2"/>
+                  <circle cx="7" cy="17" r="2"/>
+                  <path d="M9 17h6"/>
+                  <circle cx="17" cy="17" r="2"/>
+                </svg>
+              </div>
+              <div class="business-name">Automotriz</div>
+              <div class="business-description">Taller mecánico, repuestos, lavadero</div>
+            </div>
+
+            <div class="business-type" data-type="other">
+              <div class="business-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                  <circle cx="12" cy="12" r="3"/>
+                  <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1 1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                </svg>
+              </div>
+              <div class="business-name">Otro</div>
+              <div class="business-description">Mi negocio no está en estas categorías</div>
+            </div>
+          </div>
+
+          <div class="form-group mt-8">
+            <label class="form-label">Descripción del Negocio</label>
+            <textarea class="form-textarea" id="businessDescription" placeholder="Describe brevemente qué vendes o qué servicios ofreces..."></textarea>
+            <span class="form-help">Esta información nos ayudará a personalizar mejor tu experiencia</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Paso 3: Información Adicional -->
+    <div class="step-content" id="step3">
+      <div class="card form-card">
+        <div class="form-section mb-8">
+          <h3 class="flex items-center gap-2 text-lg font-semibold text-primary mb-2 section-title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 6v6l4 2"/>
+            </svg>
+            Horarios de Atención
+          </h3>
+          <p class="text-secondary text-sm mb-6 section-subtitle">Información opcional sobre tus horarios</p>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 form-grid two-columns">
+            <div class="form-group">
+              <label class="form-label">Horario de Apertura</label>
+              <input type="time" class="form-input" id="openTime">
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label">Horario de Cierre</label>
+              <input type="time" class="form-input" id="closeTime">
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label">Días de Trabajo</label>
+              <input type="text" class="form-input" id="workDays" placeholder="Ej: Lunes a Viernes, Todos los días...">
+              <span class="form-help">Describe los días que trabajas</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section mb-8">
+          <h3 class="flex items-center gap-2 text-lg font-semibold text-primary mb-2 section-title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.72"/>
+              <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.72-1.72"/>
+            </svg>
+            Redes Sociales y Web
+          </h3>
+          <p class="text-secondary text-sm mb-6 section-subtitle">Conecta tus redes sociales (opcional)</p>
+          
+          <div class="social-grid">
+            <div class="social-item">
+              <div class="social-icon website">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <line x1="2" y1="12" x2="22" y2="12"/>
+                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                </svg>
+              </div>
+              <input type="url" class="social-input" id="website" placeholder="https://mipagina.com">
+            </div>
+
+            <div class="social-item">
+              <div class="social-icon instagram">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                </svg>
+              </div>
+              <input type="text" class="social-input" id="instagram" placeholder="@minegocio">
+            </div>
+
+            <div class="social-item">
+              <div class="social-icon facebook">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                </svg>
+              </div>
+              <input type="text" class="social-input" id="facebook" placeholder="facebook.com/minegocio">
+            </div>
+
+            <div class="social-item">
+              <div class="social-icon whatsapp">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                  <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                </svg>
+              </div>
+              <input type="tel" class="social-input" id="whatsapp" placeholder="+1 234 567 8900">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h3 class="flex items-center gap-2 text-lg font-semibold text-primary mb-2 section-title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+            </svg>
+            Información Financiera
+          </h3>
+          <p class="text-secondary text-sm mb-6 section-subtitle">Configuración opcional para reportes</p>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 form-grid two-columns">
+            <div class="form-group">
+              <label class="form-label">Moneda Principal</label>
+              <input type="text" class="form-input" id="currency" placeholder="Ej: USD, EUR, ARS, MXN, BRL...">
+              <span class="form-help">Moneda que usas principalmente</span>
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label">Tipo de Facturación</label>
+              <input type="text" class="form-input" id="invoiceType" placeholder="Ej: Persona Física, Empresa, Autónomo...">
+              <span class="form-help">Tipo de régimen fiscal</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Paso 4: Resumen -->
+    <div class="step-content" id="step4">
+      <div class="card form-card">
+        <div class="form-section">
+          <h3 class="flex items-center gap-2 text-lg font-semibold text-primary mb-2 section-title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 12l2 2 4-4"/>
+              <path d="M21 12c.552 0 1-.448 1-1V8a2 2 0 0 0-2-2h-1.382a1 1 0 0 1-.894-.553L16 2H8L6.276 5.447a1 1 0 0 1-.894.553H4a2 2 0 0 0-2 2v3c0 .552.448 1 1 1"/>
+              <path d="M3 12v7a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+            </svg>
+            Resumen de Configuración
+          </h3>
+          <p class="text-secondary text-sm mb-6 section-subtitle">Revisa la información antes de finalizar</p>
+          
+          <div class="grid gap-6 summary-grid">
+            <div class="summary-item">
+              <span class="summary-label">Nombre del Negocio:</span>
+              <span class="summary-value" id="summaryName">-</span>
+            </div>
+            <div class="summary-item">
+              <span class="summary-label">Teléfono:</span>
+              <span class="summary-value" id="summaryPhone">-</span>
+            </div>
+            <div class="summary-item">
+              <span class="summary-label">Ubicación:</span>
+              <span class="summary-value" id="summaryLocation">-</span>
+            </div>
+            <div class="summary-item">
+              <span class="summary-label">Tipo de Negocio:</span>
+              <span class="summary-value" id="summaryType">-</span>
+            </div>
+            <div class="summary-item">
+              <span class="summary-label">Descripción:</span>
+              <span class="summary-value" id="summaryDescription">-</span>
+            </div>
+            <div class="summary-item">
+              <span class="summary-label">Horario de Apertura:</span>
+              <span class="summary-value" id="summaryOpenTime">-</span>
+            </div>
+            <div class="summary-item">
+              <span class="summary-label">Horario de Cierre:</span>
+              <span class="summary-value" id="summaryCloseTime">-</span>
+            </div>
+            <div class="summary-item">
+              <span class="summary-label">Días de Trabajo:</span>
+              <span class="summary-value" id="summaryWorkDays">-</span>
+            </div>
+            <div class="summary-item">
+              <span class="summary-label">Sitio Web:</span>
+              <span class="summary-value" id="summaryWebsite">-</span>
+            </div>
+            <div class="summary-item">
+              <span class="summary-label">Instagram:</span>
+              <span class="summary-value" id="summaryInstagram">-</span>
+            </div>
+            <div class="summary-item">
+              <span class="summary-label">Facebook:</span>
+              <span class="summary-value" id="summaryFacebook">-</span>
+            </div>
+            <div class="summary-item">
+              <span class="summary-label">WhatsApp:</span>
+              <span class="summary-value" id="summaryWhatsapp">-</span>
+            </div>
+            <div class="summary-item">
+              <span class="summary-label">Moneda:</span>
+              <span class="summary-value" id="summaryCurrency">-</span>
+            </div>
+            <div class="summary-item">
+              <span class="summary-label">Tipo de Facturación:</span>
+              <span class="summary-value" id="summaryInvoiceType">-</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pantalla de éxito (inicialmente oculta) fuera del paso 4 -->
+    <div class="success-content" id="successScreen" style="display: none;">
+      <div class="success-icon">
+        <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3">
+          <path d="M9 12l2 2 4-4"/>
+        </svg>
+      </div>
+      <h2 class="text-3xl font-bold text-primary mb-4 success-title">¡Configuración Completada!</h2>
+      <p class="text-lg text-secondary mb-8 success-subtitle">Tu negocio ha sido configurado exitosamente. Ya puedes comenzar a usar la aplicación.</p>
+      <button class="btn btn-primary" onclick="goToApp()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3.8,6.6h16.4"/>
+          <path d="M20.2,12.1H3.8"/>
+          <path d="M3.8,17.5h16.4"/>
+        </svg>
+        Ir a Mi Negocio
+      </button>
+    </div>
+
+    <!-- Botones de navegación usando sistema de utilidades -->
+    <div class="flex justify-between gap-4 mt-8 navigation-buttons" id="navigationButtons">
+      <button class="btn btn-secondary" id="prevBtn" onclick="previousStep()" style="display: none;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="15,18 9,12 15,6"/>
+        </svg>
+        Anterior
+      </button>
+      
+      <button class="btn btn-primary" id="nextBtn" onclick="nextStep()">
+        Siguiente
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="9,18 15,12 9,6"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <script src="js/crear-negocio.js"></script>
+</body>
+</html>

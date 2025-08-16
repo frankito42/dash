@@ -1,0 +1,297 @@
+
+
+/* Importar todo el sistema base */
+@import url('base.css');
+
+
+
+/* Header específico para clientes (verde) */
+.header-lista-clientes {
+  background: linear-gradient(135deg, 
+    rgba(16, 185, 129, 0.85), 
+    rgba(5, 150, 105, 0.85)
+  );
+}
+
+/* Barra de búsqueda y acciones específica */
+.search-input-clientes {
+  background: var(--bg-card);
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-md) var(--spacing-lg) var(--spacing-md) 3rem;
+  transition: all var(--transition-normal);
+}
+
+.search-input-clientes:focus {
+  border-color: var(--success);
+  background: rgba(16, 185, 129, 0.05);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+  transform: translateY(-1px);
+}
+
+.btn-nuevo-cliente {
+  background: var(--success-gradient);
+  color: white;
+  box-shadow: var(--shadow-success);
+  flex-shrink: 0;
+}
+
+.btn-nuevo-cliente:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-success-lg);
+}
+
+/* Filtros específicos */
+.filter-tab {
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md) var(--spacing-lg);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  font-weight: 500;
+  font-size: var(--text-sm);
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  flex-shrink: 0;
+}
+
+.filter-tab:hover {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--text-primary);
+}
+
+.filter-tab.active {
+  background: var(--success-gradient);
+  color: white;
+}
+
+.filter-count {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-lg);
+  padding: 0.2rem var(--spacing-sm);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  min-width: 1.5rem;
+  text-align: center;
+}
+
+.filter-tab.active .filter-count {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Cards de clientes específicos */
+.cliente-card {
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.cliente-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--success-gradient);
+  transform: scaleX(0);
+  transition: transform var(--transition-normal);
+}
+
+.cliente-card:hover::before {
+  transform: scaleX(1);
+}
+
+.cliente-tipo {
+  display: inline-block;
+  background: rgba(16, 185, 129, 0.2);
+  color: var(--success);
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--radius-full);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.cliente-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+}
+
+.cliente-card:hover .cliente-actions {
+  opacity: 1;
+}
+
+.cliente-action-btn {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  color: var(--text-secondary);
+}
+
+.cliente-action-btn:hover {
+  background: var(--success);
+  border-color: var(--success);
+  color: white;
+  transform: scale(1.1);
+}
+
+.cliente-action-btn.delete:hover {
+  background: var(--danger);
+  border-color: var(--danger);
+}
+
+.cliente-detail {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  color: var(--text-secondary);
+  font-size: var(--text-sm);
+}
+
+.cliente-detail svg {
+  width: 16px;
+  height: 16px;
+  color: var(--success);
+  flex-shrink: 0;
+}
+
+/* Modal específico para eliminar cliente */
+.modal-content-eliminar {
+  text-align: center;
+  padding: var(--spacing-2xl);
+}
+
+.modal-icon-eliminar {
+  width: 64px;
+  height: 64px;
+  background: var(--danger-gradient);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--spacing-xl);
+  color: white;
+}
+
+/* Modal de detalle del cliente */
+.modal-content-detalle {
+  width: 90%;
+  max-width: 500px;
+  max-height: 80vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-body-detalle {
+  flex: 1;
+  padding: var(--spacing-xl);
+  overflow-y: auto;
+}
+
+.detalle-group {
+  margin-bottom: var(--spacing-xl);
+}
+
+.detalle-title {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-md);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.detalle-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md) 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.detalle-item:last-child {
+  border-bottom: none;
+}
+
+.detalle-icon {
+  width: 20px;
+  height: 20px;
+  color: var(--success);
+  flex-shrink: 0;
+}
+
+.detalle-content {
+  flex: 1;
+}
+
+.detalle-label {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  margin-bottom: var(--spacing-xs);
+}
+
+.detalle-value {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+/* Botones específicos del modal de detalle */
+.btn-edit-cliente {
+  background: transparent;
+  border: 2px solid var(--success);
+  color: var(--success);
+}
+
+.btn-edit-cliente:hover {
+  background: var(--success);
+  color: white;
+}
+
+.btn-whatsapp-cliente {
+  background: #25D366;
+  color: white;
+}
+
+.btn-whatsapp-cliente:hover {
+  background: #128C7E;
+  transform: translateY(-1px);
+}
+
+/* Estado vacío específico */
+.btn-empty-action {
+  background: var(--success-gradient);
+  color: white;
+  box-shadow: var(--shadow-success);
+}
+
+.btn-empty-action:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-success-lg);
+}
+
+/* Animaciones específicas con delays */
+.cliente-card {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.cliente-card:nth-child(1) { animation-delay: 0.1s; }
+.cliente-card:nth-child(2) { animation-delay: 0.2s; }
+.cliente-card:nth-child(3) { animation-delay: 0.3s; }
+.cliente-card:nth-child(4) { animation-delay: 0.4s; }
+.cliente-card:nth-child(5) { animation-delay: 0.5s; }
+

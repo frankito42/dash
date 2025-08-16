@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DASH - Sistema de Inventario</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+  <!-- 🔄 MIGRACIÓN: Importar base.css primero, luego el específico -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/bienvenida.css">
+</head>
+<body>
+  <!-- 🔄 MIGRACIÓN: Mantener bg-shapes (viene de base.css) -->
+  <div class="bg-shapes">
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+  </div>
+
+  <!-- 🔄 MIGRACIÓN: Usar clases del sistema base -->
+  <div class="container flex flex-col items-center justify-center min-h-screen p-8 gap-10">
+    <!-- Header con clases del sistema -->
+    <header class="header text-center max-w-lg">
+      <div class="logo">
+        <!-- 🔄 MIGRACIÓN: Usar utilidades de tipografía del sistema -->
+        <h1 class="text-4xl font-black mb-2" style="background: var(--orange-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">DASH</h1>
+        <p class="text-xl font-semibold text-white mb-2">Sistema de Inventario Inteligente</p>
+        <p class="text-base text-secondary">Gestiona tu negocio de manera eficiente y profesional</p>
+      </div>
+    </header>
+
+    <!-- Main con clases del sistema -->
+    <main class="cards-container">
+      <a href="registro.html" class="card-link">
+        <!-- 🔄 MIGRACIÓN: card + card-clickable + hover-lift (del sistema) -->
+        <article class="card card-clickable text-center hover-lift">
+          <!-- Icono específico (mantener del archivo específico) -->
+          <div class="card-icon">
+            <i class="fas fa-user-plus"></i>
+          </div>
+          <!-- 🔄 MIGRACIÓN: Tipografía del sistema -->
+          <h2 class="text-xl font-bold mb-4">Crear Cuenta</h2>
+          <p class="text-sm text-secondary mb-6 leading-relaxed">
+            Comienza tu experiencia con <span class="card-highlight">DASH</span>. 
+            Regístrate y configura tu inventario en minutos.
+          </p>
+          <!-- Footer específico (mantener) -->
+          <div class="card-footer">
+            <span>Nuevo usuario</span>
+            <i class="fas fa-arrow-right"></i>
+          </div>
+        </article>
+      </a>
+
+      <a href="login.html" class="card-link">
+        <article class="card card-clickable text-center hover-lift">
+          <div class="card-icon">
+            <i class="fas fa-sign-in-alt"></i>
+          </div>
+          <h2 class="text-xl font-bold mb-4">Iniciar Sesión</h2>
+          <p class="text-sm text-secondary mb-6 leading-relaxed">
+            Accede a tu cuenta existente y continúa gestionando tu 
+            <span class="card-highlight">inventario</span> donde lo dejaste.
+          </p>
+          <div class="card-footer">
+            <span>Usuario existente</span>
+            <i class="fas fa-arrow-right"></i>
+          </div>
+        </article>
+      </a>
+    </main>
+  </div>
+</body>
+</html>

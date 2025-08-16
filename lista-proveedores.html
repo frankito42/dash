@@ -1,0 +1,89 @@
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Lista de Proveedores</title>
+      <link rel="stylesheet" href="css/base.css">
+      <link rel="stylesheet" href="css/lista-proveedores.css">
+    </head>
+    <body>
+    <div class="header-standard header-supplier sticky top-0 z-50">
+  <button class="back-button-standard" title="Volver" onclick="window.location.href='MenuInicio.html'">←</button>
+      <div class="header-title-standard">
+        <h1>Lista de Proveedores</h1>
+        <p>Gestiona tus proveedores y sus compras</p>
+      </div>
+    </div>
+    <div class="main-content-standard" style="max-width:900px;">
+      <div class="flex gap-4 mb-6 items-center justify-center">
+        <div class="flex-1 max-w-md">
+          <input class="form-input" id="searchProveedores" type="text" placeholder="Buscar proveedor..." style="width:100%;border:2px solid var(--border-color);border-radius:12px;">
+        </div>
+        <div class="flex-1 max-w-md">
+          <a href="crear-proveedor.html" class="btn btn-supplier btn-lg hover-lift" style="width:100%;height:48px;display:flex;align-items:center;justify-content:center;text-align:center;">+ Nuevo Proveedor</a>
+        </div>
+      </div>
+  <!-- Aquí se listarán los proveedores dinámicamente -->
+  <div id="proveedoresLista"></div>
+    </div>
+
+  
+
+  </main>
+
+  <!-- Modal de confirmación para eliminar -->
+  <div id="modalEliminar" class="modal-overlay">
+    <div class="modal-content-eliminar">
+      <div class="modal-icon-eliminar">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="3,6 5,6 21,6"/>
+          <path d="M19,6v14a2,2 0,0,1-2,2H7a2,2,0,0,1-2-2V6m3,0V4a2,2,0,0,1,2-2h4a2,2,0,0,1,2,2v2"/>
+          <line x1="10" y1="11" x2="10" y2="17"/>
+          <line x1="14" y1="11" x2="14" y2="17"/>
+        </svg>
+      </div>
+      <h3>¿Eliminar proveedor?</h3>
+      <p id="mensajeEliminar">Esta acción no se puede deshacer</p>
+      <div class="modal-actions-eliminar">
+        <button class="btn-cancel-modal" id="cancelarEliminar">Cancelar</button>
+        <button class="btn-delete-modal" id="confirmarEliminar">Eliminar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de detalle del proveedor -->
+  <div id="modalDetalle" class="modal-overlay">
+    <div class="modal-content-detalle">
+      <div class="modal-header-detalle">
+        <h3>Detalles del Proveedor</h3>
+        <button class="modal-close-detalle" id="cerrarDetalle">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body-detalle" id="contenidoDetalle">
+        <!-- El contenido se carga dinámicamente -->
+      </div>
+      <div class="modal-actions-detalle">
+        <button class="btn-edit-proveedor" id="editarProveedor">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+          </svg>
+          Editar
+        </button>
+        <button class="btn-contact-proveedor" id="contactarProveedor">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+          Contactar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/lista-proveedores.js"></script>
+</body>
+
+</html>

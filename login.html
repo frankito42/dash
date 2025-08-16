@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login DASH</title>
+  <link rel="stylesheet" href="css/login.css">
+  <link rel="stylesheet" href="css/general.css">
+</head>
+<body>
+  <!-- Animated background shapes -->
+  <div class="bg-shapes">
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+  </div>
+
+    <!-- En el header de login/registro -->
+
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <a href="bienvenida.html" class="back-btn">
+        ←
+      </a>
+      <h1 class="logo">DASH</h1>
+      <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+    </div>
+
+    <!-- Main Login Card -->
+    <div class="main-card">
+      <div class="card-title">
+        <h2>Iniciar Sesión</h2>
+        <p class="card-subtitle">Ingresa tus credenciales para continuar</p>
+      </div>
+
+      <form id="loginForm">
+        <div class="form-group">
+          <label class="form-label">Correo electrónico</label>
+          <div class="input-wrapper">
+            <input type="email" class="form-input" placeholder="tu-email@ejemplo.com" required />
+            <div class="error-message">Por favor ingresa un correo válido</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Contraseña</label>
+          <div class="input-wrapper">
+            <input type="password" class="form-input" placeholder="Ingresa tu contraseña" required />
+            <div class="error-message">Por favor ingresa tu contraseña</div>
+          </div>
+        </div>
+
+        <div class="forgot-password">
+          <a href="#" class="forgot-link">¿Olvidaste tu contraseña?</a>
+        </div>
+
+        <button type="submit" class="login-btn">
+          ➤ INICIAR SESIÓN
+        </button>
+
+        <div class="divider">
+          <span>O inicia sesión con</span>
+        </div>
+
+        <button type="button" class="google-btn">
+          <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTIyLjU2IDEyLjI1QzIyLjU2IDExLjQ3IDIyLjQ5IDEwLjcyIDIyLjM2IDEwSDE1VjE0LjI2SCExMi4xQzExLjc2IDEzLjcgMTEuMjMgMTMuMjYgMTAuNjUgMTMuMDNWMTUuMjlIMTMuMjdDMTYuMDUgMTIuODIgMjAuOTIgOC43NSAyMi41NiAxMi4yNVoiIGZpbGw9IiM0Mjg1RjQiLz4KPHBhdGggZD0iTTEyIDIwQzE0LjczIDIwIDE2Ljk2IDE5LjEzIDE4LjUzIDE3LjY3TDE1LjkxIDE1LjQxQzE1LjA4IDE2LjA0IDEzLjk2IDE2LjQzIDEyIDE2LjQzQzkuMzIgMTYuNDMgNy4xMiAxNC41MyA2LjMxIDExLjk1SDQuODVWMTQuMjVDNi40MiAxNy4zOCA4Ljk3IDIwIDEyIDIwWiIgZmlsbD0iIzM0QTg1MyIvPgo8cGF0aCBkPSJNNi4zMSAxMS45NUM2LjA1IDExLjMxIDUuOTEgMTAuNjcgNS45MSAxMEM1LjkxIDkuMzMgNi4wNSA4LjY5IDYuMzEgOC4wNVY1LjcxSDQuODVDNC4xNyA3LjExIDMuNzUgOC43IDMuNzUgMTBDNC4xNyAxMS4zIDQuMTcgMTIuODkgNC44NSAxNC4yOUw2LjMxIDExLjk1WiIgZmlsbD0iI0ZCQkMwNCIvPgo8cGF0aCBkPSJNMTIgMy41N0MxNC4wMyAzLjU3IDE1Ljc5IDQuMzUgMTYuOTggNS41TDE5LjM2IDMuMTJDMTYuOTYgMC45MiAxNC43MyAwIDEyIDBDOC45NyAwIDYuNDIgMi42MiA0Ljg1IDUuNzFMNi4zMSA4LjA1QzcuMTIgNS40NyA5LjMyIDMuNTcgMTIgMy41N1oiIGZpbGw9IiNFQTQzMzUiLz4KPC9zdmc+" alt="Google" />
+          Continuar con Google
+        </button>
+
+        <div class="register-link">
+          <p>¿No tienes cuenta? <a href="registro.html">Crear cuenta</a></p>
+        </div>
+      </form>
+    </div> 
+  </div>
+
+  <script src="js/login.js"></script>
+</body>
+</html>

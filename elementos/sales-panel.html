@@ -1,0 +1,18 @@
+<button class="sales-toggle" id="sales-toggle" style="position: fixed; bottom: 110px; right: 32px; z-index: 10001; background: linear-gradient(90deg, #00b894 0%, #00cec9 100%); color: #fffde8; border: none; border-radius: 50%; width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(0,190,148,0.12); cursor: pointer;">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M3 3h18v6H3z"/>
+    <path d="M3 9h18v12H3z"/>
+    <path d="M8 21V9"/>
+    <path d="M16 21V9"/>
+  </svg>
+</button>
+<div class="sales-summary" id="sales-summary" style=" position: fixed; bottom: 180px; right: 32px; z-index: 10002; background: #23232b; border-radius: 18px; box-shadow: 0 2px 8px rgba(0,0,0,0.18); width: 340px; max-width: 95vw; max-height: 60vh; overflow-y: auto; padding: 22px 18px;">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+    <h3 style="color: #00cec9; font-size: 1.2rem;">Ventas de la Caja</h3>
+    <button id="sales-close" style="background: none; border: none; color: #8f8f8f; font-size: 1.6rem; font-weight: bold; cursor: pointer;">&times;</button>
+  </div>
+  <div id="sales-list">
+    <!-- Aquí se mostrarán las ventas de la caja -->
+    <div style="color: #fffde8; text-align: center;">Cargando ventas...</div>
+  </div>
+</div>

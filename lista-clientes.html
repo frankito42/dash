@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Clientes - App Inventario</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/lista-clientes.css">
+</head>
+
+<body class="dark-mode">
+
+  <!-- Header usando sistema base + específico -->
+  <header class="header-standard header-lista-clientes">
+    <button class="back-button-standard" id="volverInicio">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+    </button>
+    <div class="header-title-standard">
+      <h1>Lista de Clientes</h1>
+      <p>Gestiona tu base de clientes</p>
+    </div>
+    <button id="toggleThemeListaClientes" class="theme-toggle-button" title="Cambiar tema"></button>
+  </header>
+
+  <!-- Contenido principal usando sistema -->
+  <main class="main-content-standard">
+    
+    <!-- Barra de acciones usando flexbox utilities -->
+    <div class="flex flex-col sm:flex-row gap-4 mb-6">
+      <div class="relative flex-1">
+        <svg class="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/>
+          <path d="M21 21l-4.35-4.35"/>
+        </svg>
+        <input type="text" id="searchClientes" class="search-input-clientes w-full" placeholder="Buscar clientes por nombre o teléfono...">
+      </div>
+      <button class="btn btn-success btn-nuevo-cliente flex-shrink-0" id="nuevoClienteBtn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+          <circle cx="12" cy="7" r="4"/>
+          <path d="M19 8v6M22 11h-6"/>
+        </svg>
+        Nuevo Cliente
+      </button>
+    </div>
+
+    <!-- Filtros usando sistema de tabs -->
+    <div class="mb-8">
+      <div class="flex gap-2 bg-card border border-color rounded-xl p-1 overflow-x-auto">
+        <button class="filter-tab active" data-filter="todos">
+          📋 Todos <span class="filter-count" id="countTodos">0</span>
+        </button>
+        <button class="filter-tab" data-filter="particular">
+          👤 Particulares <span class="filter-count" id="countParticular">0</span>
+        </button>
+        <button class="filter-tab" data-filter="empresa">
+          🏢 Empresas <span class="filter-count" id="countEmpresa">0</span>
+        </button>
+        <button class="filter-tab" data-filter="vip">
+          ⭐ VIP <span class="filter-count" id="countVip">0</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Lista de clientes usando grid system -->
+    <div class="clientes-container">
+      <div id="clientesLista" class="grid gap-4">
+        <!-- Los clientes se cargarán dinámicamente aquí -->
+        
+        <!-- Ejemplo de cliente card (para referencia del diseño) -->
+        <!-- 
+        <div class="card cliente-card hover-lift">
+          <div class="flex justify-between items-start mb-4">
+            <div class="flex-1">
+              <h3 class="text-xl font-semibold text-primary mb-2">Juan Pérez</h3>
+              <span class="cliente-tipo">particular</span>
+            </div>
+            <div class="cliente-actions">
+              <button class="cliente-action-btn" title="Ver detalles">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                  <circle cx="12" cy="12" r="3"/>
+                </svg>
+              </button>
+              <button class="cliente-action-btn" title="Editar">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                  <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                </svg>
+              </button>
+              <button class="cliente-action-btn delete" title="Eliminar">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="3,6 5,6 21,6"/>
+                  <path d="M19,6v14a2,2,0,0,1-2,2H7a2,2,0,0,1-2-2V6m3,0V4a2,2,0,0,1,2-2h4a2,2,0,0,1,2,2v2"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="grid gap-3 md:grid-cols-2">
+            <div class="cliente-detail">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+              juan.perez@email.com
+            </div>
+            <div class="cliente-detail">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+              +54 911 1234-5678
+            </div>
+            <div class="cliente-detail">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              Buenos Aires, Argentina
+            </div>
+            <div class="cliente-detail">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+              </svg>
+              Crédito: $5,000
+            </div>
+          </div>
+        </div>
+        -->
+      </div>
+
+      <!-- Estado vacío usando componente del sistema -->
+      <div id="estadoVacio" class="empty-state" style="display: none;">
+        <div class="empty-icon">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+        </div>
+        <h3 class="empty-title">No hay clientes registrados</h3>
+        <p class="empty-description">Comienza agregando tu primer cliente</p>
+        <button class="btn btn-success btn-empty-action" id="crearPrimerCliente">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 5v14M5 12h14"/>
+          </svg>
+          Crear primer cliente
+        </button>
+      </div>
+
+      <!-- Estado sin resultados de búsqueda -->
+      <div id="sinResultados" class="empty-state" style="display: none;">
+        <div class="empty-icon">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="11" cy="11" r="8"/>
+            <path d="M21 21l-4.35-4.35"/>
+          </svg>
+        </div>
+        <h3 class="empty-title">No se encontraron clientes</h3>
+        <p class="empty-description">Intenta con otros términos de búsqueda</p>
+        <button class="btn btn-secondary btn-empty-action" id="limpiarBusqueda">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+          Limpiar búsqueda
+        </button>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Modal de confirmación para eliminar usando sistema -->
+  <div id="modalEliminar" class="modal-overlay">
+    <div class="modal-content modal-content-eliminar">
+      <div class="modal-icon-eliminar">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="3,6 5,6 21,6"/>
+          <path d="M19,6v14a2,2 0,0,1-2,2H7a2,2,0,0,1-2-2V6m3,0V4a2,2,0,0,1,2-2h4a2,2,0,0,1,2,2v2"/>
+          <line x1="10" y1="11" x2="10" y2="17"/>
+          <line x1="14" y1="11" x2="14" y2="17"/>
+        </svg>
+      </div>
+      <h3 class="text-xl font-semibold text-primary mb-4">¿Eliminar cliente?</h3>
+      <p id="mensajeEliminar" class="text-secondary mb-8">Esta acción no se puede deshacer</p>
+      <div class="flex gap-4 justify-center">
+        <button class="btn btn-secondary" id="cancelarEliminar">Cancelar</button>
+        <button class="btn btn-danger" id="confirmarEliminar">Eliminar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de detalle del cliente usando sistema -->
+  <div id="modalDetalle" class="modal-overlay">
+    <div class="modal-content modal-content-detalle">
+      <div class="modal-header">
+        <h3 class="modal-title">Detalles del Cliente</h3>
+        <button class="modal-close" id="cerrarDetalle">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body modal-body-detalle" id="contenidoDetalle">
+        <!-- El contenido se carga dinámicamente -->
+        
+        <!-- Ejemplo de contenido del modal (para referencia del diseño) -->
+        <!--
+        <div class="detalle-group">
+          <div class="detalle-title">Información Personal</div>
+          <div class="detalle-item">
+            <svg class="detalle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+            <div class="detalle-content">
+              <div class="detalle-label">Nombre Completo</div>
+              <div class="detalle-value">Juan Carlos Pérez</div>
+            </div>
+          </div>
+          <div class="detalle-item">
+            <svg class="detalle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+            <div class="detalle-content">
+              <div class="detalle-label">Email</div>
+              <div class="detalle-value">juan.perez@email.com</div>
+            </div>
+          </div>
+        </div>
+        -->
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-edit-cliente" id="editarCliente">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+          </svg>
+          Editar
+        </button>
+        <button class="btn btn-whatsapp-cliente" id="whatsappCliente">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+          </svg>
+          WhatsApp
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/lista-clientes.js"></script>
+</body>
+
+</html>

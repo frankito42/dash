@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Empleados</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/crear-cliente.css">
+  <style>
+    .empleados-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem 1rem 2rem 1rem;
+    }
+    .empleado-card {
+      background: var(--bg-card);
+      border-radius: 24px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+      padding: 2rem 1.5rem;
+      margin-bottom: 1rem;
+      border: 1.5px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      animation: fadeInUp 0.3s;
+    }
+    .empleado-header {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .empleado-nombre {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--supplier-primary);
+    }
+    .empleado-cargo {
+      font-size: 1rem;
+      color: var(--text-muted);
+      margin-left: 1rem;
+    }
+    .empleado-contacto {
+      font-size: 1rem;
+      color: var(--text-muted);
+    }
+    .empleado-actions {
+      margin-left: auto;
+      display: flex;
+      gap: 0.5rem;
+    }
+    .empleado-detail {
+      font-size: 1rem;
+      background: rgba(251,146,60,0.10);
+      padding: 6px 18px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-right: 1rem;
+    }
+    @keyframes fadeInUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    .filtro-empleados {
+      max-width: 900px;
+      margin: 2rem auto 2rem auto;
+      display: flex;
+      gap: 1.2rem;
+      align-items: center;
+      background: var(--bg-card);
+      border-radius: 20px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      padding: 1.2rem 2rem;
+    }
+    .filtro-empleados input {
+      flex: 2;
+      padding: 0.9rem 1.2rem;
+      border-radius: 14px;
+      border: 1.5px solid var(--border-color);
+      font-size: 1.08rem;
+      background: var(--bg-input);
+      margin-right: 0.5rem;
+    }
+    .filtro-empleados select {
+      flex: 1;
+      padding: 0.9rem 1.2rem;
+      border-radius: 14px;
+      border: 1.5px solid var(--border-color);
+      font-size: 1.08rem;
+      background: var(--bg-input);
+      margin-right: 0.5rem;
+    }
+    .btn-crear-empleado {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      padding: 0.95rem 2rem;
+      border-radius: 16px;
+      background: var(--supplier-primary);
+      color: white;
+      font-size: 1.08rem;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(251,146,60,0.10);
+      transition: background 0.2s;
+    }
+    .btn-crear-empleado:hover {
+      background: #fb923c;
+    }
+  </style>
+</head>
+<body>
+  <div class="header-standard header-supplier sticky top-0 z-50">
+    <button class="back-button-standard" title="Volver" onclick="window.location.href='MenuInicio.html'">←</button>
+    <div class="header-title-standard">
+      <h1>Lista de Empleados</h1>
+      <p>Gestiona tus empleados y sus datos</p>
+    </div>
+  </div>
+  <main class="main-content-standard" style="max-width:1100px;">
+    <div class="filtro-empleados">
+      <input type="text" id="searchEmpleados" placeholder="Buscar por nombre...">
+      <select id="cargoFiltro">
+        <option value="">Todos los cargos</option>
+        <option value="Gerente">Gerente</option>
+        <option value="Vendedor">Vendedor</option>
+        <option value="Cajero">Cajero</option>
+        <option value="Otro">Otro</option>
+      </select>
+      <button class="btn-crear-empleado" onclick="window.location.href='crear-empleado.html'">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle;">
+          <path d="M12 5v14M5 12h14"/>
+        </svg>
+        Crear Empleado
+      </button>
+    </div>
+    <div class="empleados-container" id="empleadosContainer">
+      <!-- Aquí se listarán los empleados en cards -->
+    </div>
+  </main>
+  <script>
+    // Datos de ejemplo
+    const empleados = [
+      { nombre: 'Juan Pérez', email: 'juan@ejemplo.com', telefono: '3001234567', cargo: 'Gerente' },
+      { nombre: 'Ana Gómez', email: 'ana@ejemplo.com', telefono: '3009876543', cargo: 'Vendedor' },
+      { nombre: 'Carlos Ruiz', email: 'carlos@ejemplo.com', telefono: '3012345678', cargo: 'Cajero' },
+      { nombre: 'Luisa Torres', email: 'luisa@ejemplo.com', telefono: '3023456789', cargo: 'Vendedor' },
+      { nombre: 'Pedro López', email: 'pedro@ejemplo.com', telefono: '3034567890', cargo: 'Otro' }
+    ];
+
+    function renderizarEmpleados(filtrados) {
+      const container = document.getElementById('empleadosContainer');
+      container.innerHTML = '';
+      if (filtrados.length === 0) {
+        container.innerHTML = '<div style="text-align:center;color:var(--text-muted);padding:2rem;">No se encontraron empleados</div>';
+        return;
+      }
+      filtrados.forEach((empleado, idx) => {
+        const card = document.createElement('div');
+        card.className = 'empleado-card';
+        card.style.animationDelay = (idx * 0.1) + 's';
+        card.innerHTML = `
+          <div class="empleado-header">
+            <div>
+              <span class="empleado-nombre">${empleado.nombre}</span>
+              <span class="empleado-cargo">${empleado.cargo}</span>
+            </div>
+            <div class="empleado-actions">
+              <button title="Editar" style="background:var(--bg-secondary);border-radius:12px;border:1px solid var(--border-color);width:40px;height:40px;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 1 1 3 3L7 19.5 3 21l1.5-4L16.5 3.5z"/></svg>
+              </button>
+              <button title="Eliminar" style="background:var(--danger);border-radius:12px;border:1px solid var(--danger);width:40px;height:40px;color:white;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m5 6v6m4-6v6"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="empleado-detail"><b>Email:</b> ${empleado.email}</div>
+          <div class="empleado-detail"><b>Teléfono:</b> ${empleado.telefono}</div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function filtrarEmpleados() {
+      const texto = document.getElementById('searchEmpleados').value.toLowerCase().trim();
+      const cargo = document.getElementById('cargoFiltro').value;
+      let filtrados = empleados.filter(e => {
+        const coincideNombre = e.nombre.toLowerCase().includes(texto);
+        const coincideCargo = !cargo || e.cargo === cargo;
+        return coincideNombre && coincideCargo;
+      });
+      renderizarEmpleados(filtrados);
+    }
+
+    document.getElementById('searchEmpleados').addEventListener('input', filtrarEmpleados);
+    document.getElementById('cargoFiltro').addEventListener('change', filtrarEmpleados);
+
+    // Inicial
+    renderizarEmpleados(empleados);
+  </script>
+</body>
+</html>

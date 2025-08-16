@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crear Empleado</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/crear-cliente.css">
+  <style>
+    .empleado-form {
+      max-width: 480px;
+      margin: 2rem auto;
+      background: var(--bg-card);
+      border-radius: 24px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+      padding: 2rem 2rem 1.5rem 2rem;
+      border: 1.5px solid var(--border-color);
+    }
+    .empleado-form h2 {
+      color: var(--supplier-primary);
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    .empleado-form .form-group {
+      margin-bottom: 1.2rem;
+    }
+    .empleado-form label {
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+    .empleado-form input {
+      width: 100%;
+      padding: 0.7rem;
+      border-radius: 12px;
+      border: 1.5px solid var(--border-color);
+      font-size: 1rem;
+      background: var(--bg-input);
+    }
+    .empleado-form .btn {
+      width: 100%;
+      padding: 0.9rem;
+      border-radius: 16px;
+      background: var(--supplier-primary);
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border: none;
+      margin-top: 1.2rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .empleado-form .btn:hover {
+      background: #fb923c;
+    }
+  </style>
+</head>
+<body>
+  <div class="header-standard header-supplier sticky top-0 z-50">
+    <button class="back-button-standard" title="Volver" onclick="window.location.href='MenuInicio.html'">←</button>
+    <div class="header-title-standard">
+      <h1>Crear Empleado</h1>
+      <p>Agrega un nuevo empleado a tu negocio</p>
+    </div>
+  </div>
+  <main class="main-content-standard" style="max-width:900px;">
+    <form class="empleado-form">
+      <h2>Datos del Empleado</h2>
+      <div class="form-group">
+        <label for="nombreEmpleado">Nombre</label>
+        <input type="text" id="nombreEmpleado" name="nombreEmpleado" placeholder="Nombre completo" required>
+      </div>
+      <div class="form-group">
+        <label for="emailEmpleado">Email</label>
+        <input type="email" id="emailEmpleado" name="emailEmpleado" placeholder="Correo electrónico">
+      </div>
+      <div class="form-group">
+        <label for="telefonoEmpleado">Teléfono</label>
+        <input type="tel" id="telefonoEmpleado" name="telefonoEmpleado" placeholder="Teléfono">
+      </div>
+      <div class="form-group">
+        <label for="cargoEmpleado">Cargo</label>
+        <input type="text" id="cargoEmpleado" name="cargoEmpleado" placeholder="Cargo o puesto">
+      </div>
+      <button type="submit" class="btn">Guardar Empleado</button>
+    </form>
+  </main>
+</body>
+</html>

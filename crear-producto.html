@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crear Producto - App Inventario</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/MenuInicio.css">
+  <link rel="stylesheet" href="css/crear-producto.css">
+</head>
+
+<body class="dark-mode">
+
+  <div class="header-standard header-simple">
+    <button class="back-button-standard" id="volverInventario">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+    </button>
+    <div class="header-title-standard">
+      <h1>Crear Producto</h1>
+      <p>Agrega un nuevo producto</p>
+    </div>
+    <button id="toggleThemeProduct" class="theme-toggle-button" title="Cambiar tema"></button>
+  </div>
+
+  <div class="main-content-standard">
+    <div class="card">
+      <form id="formCrearProducto">
+        <!-- Sección de imagen -->
+        <div class="form-section">
+          <h3 class="text-lg font-semibold mb-6 flex items-center gap-2">
+            <span class="w-1 h-4 bg-info rounded"></span>
+            Imagen del Producto
+          </h3>
+          <div class="text-center">
+            <div class="image-upload-area" id="imageUploadArea">
+              <div class="image-preview" id="imagePreview">
+                <div class="text-center text-secondary">
+                  <div class="upload-placeholder">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                      <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                      <circle cx="8.5" cy="8.5" r="1.5"/>
+                      <polyline points="21,15 16,10 5,21"/>
+                    </svg>
+                    <span class="block font-medium mb-1">Toca para agregar imagen</span>
+                    <small class="text-xs opacity-70">JPG, PNG o WEBP (máx. 5MB)</small>
+                  </div>
+                </div>
+              </div>
+              <input type="file" id="imageInput" accept="image/*" hidden>
+            </div>
+          </div>
+        </div>
+
+        <!-- Información básica -->
+        <div class="form-section">
+          <h3 class="text-lg font-semibold mb-6 flex items-center gap-2">
+            <span class="w-1 h-4 bg-info rounded"></span>
+            Información Básica
+          </h3>
+          
+          <div class="form-group">
+            <label for="codigoBarra" class="form-label flex items-center gap-2">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 5v14M7 5v14M11 5v14M15 5v14M19 5v14"/>
+              </svg>
+              Código de Barras
+            </label>
+            <div class="input-with-scan">
+              <input type="text" id="codigoBarra" class="form-input" placeholder="Escanea o ingresa manualmente">
+              <button type="button" class="scan-button" id="scanButton">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M9 12l2 2 4-4M21 12c.552 0 1-.448 1-1V8a2 2 0 0 0-2-2h-1.382a1 1 0 0 1-.894-.553L16 2H8L6.276 5.447a1 1 0 0 1-.894.553H4a2 2 0 0 0-2 2v3c0 .552.448 1 1"/>
+                </svg>
+              </button>
+            </div>
+            <small class="form-help">Opcional - Puedes escanearlo o ingresarlo manualmente</small>
+          </div>
+
+          <div class="form-group">
+            <label for="nombreProducto" class="form-label flex items-center gap-2">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                <circle cx="12" cy="7" r="4"/>
+              </svg>
+              Nombre del Producto *
+            </label>
+            <input type="text" id="nombreProducto" class="form-input" placeholder="Ej: Coca Cola 500ml" required maxlength="100">
+            <small class="form-help">Este nombre aparecerá en el inventario y ventas</small>
+          </div>
+
+          <div class="form-group">
+            <label for="categoriaProducto" class="form-label flex items-center gap-2">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 6h16M4 12h16M4 18h16"/>
+              </svg>
+              Categoría *
+            </label>
+            <div class="select-wrapper">
+              <select id="categoriaProducto" class="form-select" required>
+                <option value="">Seleccionar categoría</option>
+                <option value="bebidas">Bebidas</option>
+                <option value="comestibles">Comestibles</option>
+                <option value="hogar">Hogar</option>
+                <option value="higiene">Higiene Personal</option>
+                <option value="electronica">Electrónica</option>
+              </select>
+              <svg class="select-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6,9 12,15 18,9"/>
+              </svg>
+            </div>
+            <small class="form-help">Si no encuentras tu categoría, puedes <a href="#" id="crearNuevaCategoria">crear una nueva</a></small>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="form-group">
+              <label for="cantidad" class="form-label flex items-center gap-2">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                </svg>
+                Cantidad Inicial *
+              </label>
+              <div class="quantity-input">
+                <button type="button" class="qty-btn minus" id="decreaseQty">−</button>
+                <input type="number" id="cantidad" class="form-input quantity" value="1" min="0" max="999999" required>
+                <button type="button" class="qty-btn plus" id="increaseQty">+</button>
+              </div>
+              <small class="form-help">Stock inicial del producto</small>
+            </div>
+
+            <div class="form-group">
+              <label for="costo" class="form-label flex items-center gap-2">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="12" y1="1" x2="12" y2="23"/>
+                  <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                </svg>
+                Costo *
+              </label>
+              <div class="currency-input">
+                <span class="currency-symbol">$</span>
+                <input type="number" id="costo" class="form-input" placeholder="0.00" step="0.01" min="0" required>
+              </div>
+              <small class="form-help">Precio de compra o costo unitario</small>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="precio" class="form-label flex items-center gap-2">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+              </svg>
+              Precio de Venta *
+            </label>
+            <div class="currency-input">
+              <span class="currency-symbol">$</span>
+              <input type="number" id="precio" class="form-input" placeholder="0.00" step="0.01" min="0" required>
+            </div>
+            <small class="form-help">Precio al cual venderás el producto</small>
+            
+            <!-- Indicador de margen -->
+            <div class="margin-indicator" id="marginIndicator" style="display: none;">
+              <div class="margin-info">
+                <span class="margin-label">Margen de ganancia:</span>
+                <span class="margin-value" id="marginValue">0%</span>
+                <span class="margin-amount" id="marginAmount">($0.00)</span>
+              </div>
+              <div class="margin-bar">
+                <div class="margin-fill" id="marginFill"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Botones de acción -->
+        <div class="flex gap-4 justify-end pt-6 border-t">
+          <button type="button" class="btn btn-secondary" id="cancelarProducto">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="18" y1="6" x2="6" y2="18"/>
+              <line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+            Cancelar
+          </button>
+          <button type="submit" class="btn btn-create" id="guardarProducto">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/>
+              <polyline points="17,21 17,13 7,13 7,21"/>
+              <polyline points="7,3 7,8 15,8"/>
+            </svg>
+            Crear Producto
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal de confirmación -->
+  <div id="modalConfirmacion" class="modal-overlay">
+    <div class="modal-content-confirm">
+      <div class="modal-icon">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+          <polyline points="22,4 12,14.01 9,11.01"/>
+        </svg>
+      </div>
+      <h3>¿Guardar producto?</h3>
+      <p>Se creará el producto con la información ingresada</p>
+      <div class="modal-actions">
+        <button class="btn btn-secondary" id="cancelarGuardar">Cancelar</button>
+        <button class="btn btn-create" id="confirmarGuardar">Guardar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/crear-producto.js"></script>
+</body>
+
+</html>
